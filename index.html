@@ -318,6 +318,24 @@ html,body{height:100%;background:var(--bg);font-family:'Georgia',serif}
   </div>
 </div>
 
+<!-- CONTACT EDIT MODAL -->
+<div class="modal-overlay hidden" id="contact-edit-modal">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <div class="modal-title" id="contact-modal-title">Edit Contact</div>
+      <button class="modal-close" onclick="closeContactModal()">✕</button>
+    </div>
+    <div class="modal-section-label">Name</div>
+    <input class="modal-input" id="contact-edit-name" style="margin-top:6px">
+    <div class="modal-section-label">Role / Description</div>
+    <input class="modal-input" id="contact-edit-role" style="margin-top:6px">
+    <div class="modal-section-label">Phone</div>
+    <input class="modal-input" id="contact-edit-phone" placeholder="e.g. 91234567 or +886..." style="margin-top:6px">
+    <button class="modal-save-btn" onclick="saveContactEdit()" style="margin-top:1.25rem"><i class="ti ti-check"></i> Save &amp; Sync</button>
+    <div class="saving-indicator" id="contact-saving-indicator"></div>
+  </div>
+</div>
+
 <!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -497,6 +515,15 @@ function attachFirebaseListeners(){
         return sec;
       });
       if(currentRole)renderSupplies();
+    }
+  });
+  window._dbOnValue(window._dbRef(db,'contacts'),(snap)=>{
+    if(snap.exists()){
+      const data=snap.val();
+      if(Array.isArray(data)){
+        data.forEach(function(c,i){if(c&&CONTACTS[i])Object.assign(CONTACTS[i],c);});
+      }
+      if(currentRole)renderContacts();
     }
   });
   window._dbOnValue(window._dbRef(db,'checks'),(snap)=>{
@@ -752,13 +779,46 @@ async function resetChecks(){checkedItems={};document.querySelectorAll('.supply-
 function updateCheckCount(){document.getElementById('check-count').textContent=Object.values(checkedItems).filter(Boolean).length;}
 
 // ─── Contacts ─────────────────────────────────────────────
+let editingContactIdx=null;
 function renderContacts(){
-  document.getElementById('contacts-content').innerHTML=CONTACTS.map(c=>`
+  const isAdmin=currentRole==='admin';
+  document.getElementById('contacts-content').innerHTML=CONTACTS.map((c,i)=>`
     <div class="contact-card">
       <div class="contact-avatar">${c.initials}</div>
       <div style="flex:1"><div class="contact-name">${c.name}</div><div class="contact-role">${c.role}</div></div>
-      ${c.phone&&c.phone!=='（待填）'?`<a href="tel:${c.phone.replace(/[^+\d]/g,'')}" style="font-size:12px;color:var(--accent);font-family:sans-serif;text-decoration:none;flex-shrink:0;padding-left:8px" onclick="event.stopPropagation()">${c.phone}</a>`:(c.phone==='（待填）'?'<span style="font-size:11px;color:var(--text-muted);font-family:sans-serif">待填</span>':'')}
+      ${c.phone&&c.phone!=='（待填）'?`<a href="tel:${c.phone.replace(/[^+\d]/g,'')}" style="font-size:12px;color:var(--accent);font-family:sans-serif;text-decoration:none;flex-shrink:0;padding-left:8px" onclick="event.stopPropagation()">${c.phone}</a>`:(c.phone==='（待填）'?'<span style="font-size:11px;color:var(--text-muted);font-family:sans-serif;flex-shrink:0;padding-left:6px">待填</span>':'')}
+      ${isAdmin?`<button class="supply-edit-btn" onclick="openContactModal(${i})" style="margin-left:8px;flex-shrink:0"><i class="ti ti-pencil"></i></button>`:''}
     </div>`).join('');
+}
+function openContactModal(i){
+  editingContactIdx=i;
+  const c=CONTACTS[i];
+  document.getElementById('contact-modal-title').textContent='Edit: '+c.name;
+  document.getElementById('contact-edit-name').value=c.name||'';
+  document.getElementById('contact-edit-role').value=c.role||'';
+  document.getElementById('contact-edit-phone').value=c.phone||'';
+  document.getElementById('contact-saving-indicator').textContent='';
+  document.getElementById('contact-edit-modal').classList.remove('hidden');
+}
+function closeContactModal(){document.getElementById('contact-edit-modal').classList.add('hidden');editingContactIdx=null;}
+function saveContactEdit(){
+  if(editingContactIdx===null)return;
+  const indicator=document.getElementById('contact-saving-indicator');
+  const saveBtn=document.querySelector('#contact-edit-modal .modal-save-btn');
+  indicator.textContent='Saving...';indicator.style.color='var(--text-muted)';
+  if(saveBtn)saveBtn.disabled=true;
+  const i=editingContactIdx;
+  CONTACTS[i].name=document.getElementById('contact-edit-name').value.trim()||CONTACTS[i].name;
+  CONTACTS[i].role=document.getElementById('contact-edit-role').value.trim();
+  CONTACTS[i].phone=document.getElementById('contact-edit-phone').value.trim();
+  // Auto-update initials from first letter of name
+  CONTACTS[i].initials=CONTACTS[i].name.charAt(0).toUpperCase();
+  renderContacts();
+  if(window._firebaseReady&&window._db){
+    window._dbSet(window._dbRef(window._db,'contacts/'+i),{name:CONTACTS[i].name,role:CONTACTS[i].role,phone:CONTACTS[i].phone,initials:CONTACTS[i].initials})
+      .then(function(){indicator.textContent='✓ Saved & synced';indicator.style.color='var(--success)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeContactModal,1000);})
+      .catch(function(e){indicator.textContent='⚠️ Error: '+e.message;indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;});
+  } else {indicator.textContent='⚠️ Firebase not connected';indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeContactModal,1200);}
 }
 
 // Init supplies collapsed
