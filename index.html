@@ -394,6 +394,7 @@ let firebaseListenerAttached=false;
 function attachFirebaseListeners(){
   if(firebaseListenerAttached||!window._firebaseReady)return;
   firebaseListenerAttached=true;
+  console.log('[Wedding App] Firebase listeners attached');
   const db=window._db;
 
   // Timeline overrides
@@ -555,42 +556,58 @@ function openEditModal(idx){
   document.getElementById('edit-modal').classList.remove('hidden');
 }
 function closeModal(){document.getElementById('edit-modal').classList.add('hidden');editingBlockIdx=null;}
-async function saveEdits(){
+function saveEdits(){
   if(editingBlockIdx===null)return;
   const indicator=document.getElementById('saving-indicator');
+  const saveBtn=document.querySelector('.modal-save-btn');
   indicator.textContent='Saving...';
+  indicator.style.color='var(--text-muted)';
+  if(saveBtn)saveBtn.disabled=true;
+
   const updates={};
   EDITABLE_ROLES.forEach(role=>{
-    const val=document.getElementById('edit-tasks-'+role).value.trim();
+    const el=document.getElementById('edit-tasks-'+role);
+    const val=el?el.value.trim():'';
     updates[role]=val?val.split('\n').map(s=>s.trim()).filter(Boolean):[];
   });
-  const notes=document.getElementById('edit-notes').value.trim();
-  const alert_=document.getElementById('edit-alert').value.trim();
-  const camera=document.getElementById('edit-camera').value.trim();
+  const notes=(document.getElementById('edit-notes')||{}).value||'';
+  const alert_=(document.getElementById('edit-alert')||{}).value||'';
+  const camera=(document.getElementById('edit-camera')||{}).value||'';
 
-  // Update local
-  TIMELINE[editingBlockIdx].tasks=Object.assign({},TIMELINE[editingBlockIdx].tasks,updates);
-  TIMELINE[editingBlockIdx].notes=notes;
-  TIMELINE[editingBlockIdx].alert=alert_;
-  TIMELINE[editingBlockIdx].camera=camera;
+  // Always update local state immediately
+  const idx=editingBlockIdx;
+  TIMELINE[idx].tasks=Object.assign({},TIMELINE[idx].tasks,updates);
+  TIMELINE[idx].notes=notes.trim();
+  TIMELINE[idx].alert=alert_.trim();
+  TIMELINE[idx].camera=camera.trim();
+  renderTimeline(currentRole,currentFilter);
 
   // Push to Firebase
-  if(window._firebaseReady){
-    const db=window._db;
-    const payload={tasks:updates,notes,alert:alert_,camera};
-    try{
-      await window._dbSet(window._dbRef(db,`timeline/${editingBlockIdx}`),payload);
-      indicator.textContent='✓ Saved & synced to all users';
-      indicator.style.color='var(--success)';
-    } catch(e){
-      indicator.textContent='⚠️ Saved locally, sync failed: '+e.message;
-      indicator.style.color='var(--danger)';
-    }
+  if(window._firebaseReady && window._db){
+    const payload={
+      tasks:updates,
+      notes:notes.trim(),
+      alert:alert_.trim(),
+      camera:camera.trim()
+    };
+    window._dbSet(window._dbRef(window._db,'timeline/'+idx), payload)
+      .then(function(){
+        indicator.textContent='✓ Saved & synced to all users';
+        indicator.style.color='var(--success)';
+        if(saveBtn)saveBtn.disabled=false;
+        setTimeout(closeModal,1000);
+      })
+      .catch(function(e){
+        indicator.textContent='⚠️ Firebase error: '+e.message;
+        indicator.style.color='var(--danger)';
+        if(saveBtn)saveBtn.disabled=false;
+      });
   } else {
-    indicator.textContent='⚠️ Firebase not ready, saved locally only';
+    indicator.textContent='⚠️ Firebase not connected';
+    indicator.style.color='var(--danger)';
+    if(saveBtn)saveBtn.disabled=false;
+    setTimeout(closeModal,1200);
   }
-  renderTimeline(currentRole,currentFilter);
-  setTimeout(closeModal,1200);
 }
 
 // ─── Supplies ─────────────────────────────────────────────
