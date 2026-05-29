@@ -11,26 +11,39 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#FAF7F2;--cream2:#F3EDE3;--cream3:#EDE4D6;
-  --gold:#8B6B3D;--gold-mid:#A07C4A;--gold-light:#C4A068;
-  --text-primary:#1C1710;--text-secondary:#4A3F30;--text-muted:#9A8C7A;
-  --border:rgba(139,107,61,0.18);--border-hover:rgba(139,107,61,0.4);
-  --danger:#C0392B;--success:#2E7D4F;
+  --bg:#F7F4F8;
+  --bg2:#EEE8F2;
+  --bg3:#E6DFF0;
+  --card:#FFFFFF;
+  --accent:#9B8EC4;
+  --accent2:#B8A8D8;
+  --accent3:#D4CAE8;
+  --blush:#E8B4B8;
+  --blue:#B8D4E8;
+  --sand:#D4B896;
+  --lilac:#C9B8D4;
+  --text-primary:#2C2440;
+  --text-secondary:#5A4E6E;
+  --text-muted:#9A8EAA;
+  --border:rgba(155,142,196,0.2);
+  --border-hover:rgba(155,142,196,0.5);
+  --danger:#C0392B;
+  --success:#2E7D4F;
 }
-html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
-.app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--cream)}
+html,body{height:100%;background:var(--bg);font-family:'Georgia',serif}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg)}
 .screen{display:none}.screen.active{display:block}
 
 /* LOGIN */
-.login-wrap{padding:3rem 1.5rem 2rem;text-align:center}
-.login-logo{font-size:11px;letter-spacing:5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:.75rem}
+.login-wrap{padding:3rem 1.5rem 2rem;text-align:center;background:var(--bg)}
+.login-logo{font-size:11px;letter-spacing:5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:.75rem;font-family:sans-serif}
 .login-title{font-size:30px;color:var(--text-primary);margin-bottom:.3rem;font-style:italic;letter-spacing:.5px}
 .login-date{font-size:11px;color:var(--text-muted);letter-spacing:2.5px;margin-bottom:.75rem;font-family:sans-serif;text-transform:uppercase}
-.login-divider{width:40px;height:1px;background:var(--gold-light);margin:0 auto 2rem}
+.login-divider{width:40px;height:1px;background:var(--accent3);margin:0 auto 2rem}
 .section-label{font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;font-family:sans-serif;margin:1.25rem 0 .6rem;text-align:left}
-.login-btn{display:flex;width:100%;padding:13px 14px;margin-bottom:8px;border-radius:10px;border:.5px solid var(--border);background:#fff;cursor:pointer;align-items:center;gap:12px;transition:all .2s;font-family:sans-serif;text-align:left}
-.login-btn:hover{border-color:var(--gold-mid);background:var(--cream2)}
-.btn-icon{width:36px;height:36px;border-radius:8px;background:var(--cream2);border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.login-btn{display:flex;width:100%;padding:13px 14px;margin-bottom:8px;border-radius:10px;border:.5px solid var(--border);background:var(--card);cursor:pointer;align-items:center;gap:12px;transition:all .2s;font-family:sans-serif;text-align:left}
+.login-btn:hover{border-color:var(--accent);background:var(--bg2)}
+.btn-icon{width:36px;height:36px;border-radius:8px;background:var(--bg2);border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .btn-label{font-size:14px;color:var(--text-primary);font-weight:500}
 .btn-sub{font-size:11px;color:var(--text-muted);margin-top:1px}
 
@@ -39,115 +52,129 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
 .pin-sub{font-size:11px;color:var(--text-muted);margin-bottom:1.5rem;font-family:sans-serif;letter-spacing:1px}
 .pin-dots{display:flex;justify-content:center;gap:14px;margin-bottom:1.5rem}
 .pin-dot{width:12px;height:12px;border-radius:50%;border:1px solid var(--border-hover);background:transparent;transition:background .15s}
-.pin-dot.filled{background:var(--gold);border-color:var(--gold)}
+.pin-dot.filled{background:var(--accent);border-color:var(--accent)}
 .pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:210px;margin:0 auto 1rem}
-.pin-key{padding:14px;border-radius:10px;border:.5px solid var(--border);background:#fff;color:var(--text-primary);font-size:18px;cursor:pointer;transition:all .15s;font-family:sans-serif}
-.pin-key:hover{background:var(--cream2);border-color:var(--gold-mid)}
+.pin-key{padding:14px;border-radius:10px;border:.5px solid var(--border);background:var(--card);color:var(--text-primary);font-size:18px;cursor:pointer;transition:all .15s;font-family:sans-serif}
+.pin-key:hover{background:var(--bg2);border-color:var(--accent)}
 .pin-key:active{transform:scale(.95)}
 .pin-error{color:var(--danger);font-size:12px;margin-top:.5rem;font-family:sans-serif;min-height:16px;text-align:center}
 .back-btn{background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;padding:8px;font-family:sans-serif;display:block;margin:0 auto}
 
 /* NAV */
-.nav-bar{display:flex;border-bottom:.5px solid var(--border);background:#fff;position:sticky;top:0;z-index:10}
+.nav-bar{display:flex;border-bottom:.5px solid var(--border);background:var(--card);position:sticky;top:0;z-index:10}
 .nav-tab{flex:1;padding:11px 4px;text-align:center;font-size:10px;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;font-family:sans-serif;letter-spacing:.5px;text-transform:uppercase}
-.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 .nav-tab i{display:block;font-size:17px;margin-bottom:2px}
 
 /* HEADER */
-.page-header{padding:1.25rem 1.25rem .75rem;border-bottom:.5px solid var(--border);background:#fff}
+.page-header{padding:1.25rem 1.25rem .75rem;border-bottom:.5px solid var(--border);background:var(--card)}
 .page-header h2{font-size:21px;color:var(--text-primary);font-style:italic;margin-bottom:2px}
 .page-header p{font-size:10px;color:var(--text-muted);font-family:sans-serif;letter-spacing:2px;text-transform:uppercase}
-.role-badge{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--cream2);border:.5px solid var(--border);font-size:11px;color:var(--gold);margin-top:6px;font-family:sans-serif;letter-spacing:.5px}
+.role-badge{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--bg2);border:.5px solid var(--border);font-size:11px;color:var(--accent);margin-top:6px;font-family:sans-serif;letter-spacing:.5px}
 
 /* FILTER */
-.filter-bar{display:flex;gap:6px;padding:.75rem 1.25rem 0;overflow-x:auto;background:var(--cream)}
-.filter-chip{padding:5px 12px;border-radius:20px;border:.5px solid var(--border);background:#fff;color:var(--text-muted);font-size:11px;cursor:pointer;white-space:nowrap;font-family:sans-serif;transition:all .2s;flex-shrink:0}
-.filter-chip.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+.filter-bar{display:flex;gap:6px;padding:.75rem 1.25rem 0;overflow-x:auto;background:var(--bg)}
+.filter-chip{padding:5px 12px;border-radius:20px;border:.5px solid var(--border);background:var(--card);color:var(--text-muted);font-size:11px;cursor:pointer;white-space:nowrap;font-family:sans-serif;transition:all .2s;flex-shrink:0}
+.filter-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 /* TIMELINE */
-.timeline-wrap{padding:1rem 1.25rem;background:var(--cream)}
-.time-block{margin-bottom:8px;border-radius:10px;border:.5px solid var(--border);background:#fff;overflow:hidden;transition:border-color .2s}
-.time-block.open{border-color:var(--gold-mid)}
+.timeline-wrap{padding:1rem 1.25rem;background:var(--bg)}
+.time-block{margin-bottom:8px;border-radius:10px;border:.5px solid var(--border);background:var(--card);overflow:hidden;transition:border-color .2s}
+.time-block.open{border-color:var(--accent)}
 .time-block-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer}
-.time-tag{font-size:10px;color:var(--gold);font-family:sans-serif;letter-spacing:1px;min-width:56px;font-weight:600}
+.time-tag{font-size:10px;color:var(--accent);font-family:sans-serif;letter-spacing:1px;min-width:56px;font-weight:600}
 .time-title{flex:1;font-size:13px;color:var(--text-primary);font-family:sans-serif;font-weight:500}
 .time-chevron{font-size:13px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
 .time-block.open .time-chevron{transform:rotate(180deg)}
 .edit-block-btn{background:none;border:.5px solid var(--border);border-radius:6px;padding:4px 8px;cursor:pointer;color:var(--text-muted);font-size:12px;display:flex;align-items:center;gap:4px;font-family:sans-serif;transition:all .2s;flex-shrink:0}
-.edit-block-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--cream2)}
+.edit-block-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--bg2)}
 .time-body{display:none;padding:12px 14px 14px;border-top:.5px solid var(--border)}
 .time-block.open .time-body{display:block}
 .task-label{font-size:9px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;font-family:sans-serif}
 .task-section{margin-bottom:10px}
 .task-item{display:flex;align-items:flex-start;gap:8px;padding:3px 0;font-size:13px;color:var(--text-secondary);font-family:sans-serif;line-height:1.45}
-.task-item::before{content:'–';color:var(--gold-light);flex-shrink:0}
-.alert-item{background:#FEF9F0;border-left:2px solid var(--gold-mid);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;color:var(--gold);font-family:sans-serif;margin-bottom:8px;line-height:1.4}
+.task-item::before{content:'–';color:var(--accent3);flex-shrink:0}
+.alert-item{background:#FEF0F0;border-left:2px solid var(--blush);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;color:#8B3A3A;font-family:sans-serif;margin-bottom:8px;line-height:1.4}
 .camera-item{background:#F0F7F2;border-left:2px solid var(--success);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;color:var(--success);font-family:sans-serif;margin-bottom:8px;line-height:1.4}
+.couple-item{background:linear-gradient(135deg,rgba(184,212,232,.15),rgba(201,184,212,.15));border-left:2px solid var(--blue);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;color:var(--text-secondary);font-family:sans-serif;margin-bottom:6px;line-height:1.4}
+.couple-item-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-family:sans-serif;margin-bottom:3px;font-weight:600}
 .role-group{margin-bottom:8px}
-.role-group-label{font-size:9px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-family:sans-serif;margin-bottom:3px;font-weight:600}
+.role-group-label{font-size:9px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;font-family:sans-serif;margin-bottom:3px;font-weight:600}
+
+/* LUCKY PHRASES */
+.lucky-section{margin-top:10px;background:var(--bg2);border-radius:8px;padding:10px 12px}
+.lucky-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-family:sans-serif;font-weight:600;margin-bottom:8px}
+.lucky-category{margin-bottom:10px}
+.lucky-cat-label{font-size:10px;color:var(--text-secondary);font-family:sans-serif;font-weight:600;margin-bottom:4px;padding-bottom:3px;border-bottom:.5px solid var(--border)}
+.lucky-phrase{font-size:12px;color:var(--text-secondary);font-family:sans-serif;padding:4px 0;line-height:1.45;border-bottom:.5px solid rgba(155,142,196,.08)}
+.lucky-phrase:last-child{border-bottom:none}
 
 /* EDIT MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(28,23,16,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
+.modal-overlay{position:fixed;inset:0;background:rgba(44,36,64,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
 .modal-overlay.hidden{display:none}
-.modal-sheet{background:var(--cream);border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:1.5rem 1.25rem 2rem}
+.modal-sheet{background:var(--bg);border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:1.5rem 1.25rem 2rem}
 .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
 .modal-title{font-size:16px;color:var(--text-primary);font-style:italic}
 .modal-close{background:none;border:none;font-size:20px;color:var(--text-muted);cursor:pointer;padding:4px}
 .modal-section-label{font-size:9px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;margin-bottom:6px;margin-top:14px}
-.modal-role-label{font-size:11px;color:var(--gold);font-family:sans-serif;font-weight:600;margin-bottom:4px;margin-top:10px;letter-spacing:.5px}
-.modal-textarea{width:100%;padding:10px;border-radius:8px;border:.5px solid var(--border);background:#fff;font-size:13px;color:var(--text-primary);font-family:sans-serif;line-height:1.5;resize:vertical;min-height:70px}
-.modal-textarea:focus{outline:none;border-color:var(--gold-mid)}
-.modal-input{width:100%;padding:10px;border-radius:8px;border:.5px solid var(--border);background:#fff;font-size:13px;color:var(--text-primary);font-family:sans-serif}
-.modal-input:focus{outline:none;border-color:var(--gold-mid)}
-.modal-save-btn{width:100%;margin-top:1.25rem;padding:14px;border-radius:10px;background:var(--gold);border:none;color:#fff;font-size:14px;font-family:sans-serif;font-weight:600;cursor:pointer;transition:background .2s;letter-spacing:.5px}
-.modal-save-btn:hover{background:var(--gold-mid)}
-.saving-indicator{font-size:11px;color:var(--success);font-family:sans-serif;text-align:center;margin-top:8px;min-height:16px}
+.modal-role-label{font-size:11px;color:var(--accent);font-family:sans-serif;font-weight:600;margin-bottom:4px;margin-top:10px;letter-spacing:.5px}
+.modal-textarea{width:100%;padding:10px;border-radius:8px;border:.5px solid var(--border);background:var(--card);font-size:13px;color:var(--text-primary);font-family:sans-serif;line-height:1.5;resize:vertical;min-height:70px}
+.modal-textarea:focus{outline:none;border-color:var(--accent)}
+.modal-input{width:100%;padding:10px;border-radius:8px;border:.5px solid var(--border);background:var(--card);font-size:13px;color:var(--text-primary);font-family:sans-serif}
+.modal-input:focus{outline:none;border-color:var(--accent)}
+.modal-save-btn{width:100%;margin-top:1.25rem;padding:14px;border-radius:10px;background:var(--accent);border:none;color:#fff;font-size:14px;font-family:sans-serif;font-weight:600;cursor:pointer;transition:background .2s;letter-spacing:.5px}
+.modal-save-btn:hover{background:var(--text-secondary)}
+.saving-indicator{font-size:11px;font-family:sans-serif;text-align:center;margin-top:8px;min-height:16px}
 
 /* SUPPLIES */
-.supplies-wrap{padding:1rem 1.25rem;background:var(--cream)}
+.supplies-wrap{padding:1rem 1.25rem;background:var(--bg)}
 .reset-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .progress-text{font-size:12px;color:var(--text-muted);font-family:sans-serif}
-.progress-count{color:var(--gold);font-weight:600}
+.progress-count{color:var(--accent);font-weight:600}
 .reset-btn{background:none;border:.5px solid var(--border);color:var(--text-muted);font-size:11px;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:sans-serif;transition:all .2s;display:flex;align-items:center;gap:4px}
 .reset-btn:hover{border-color:var(--danger);color:var(--danger)}
-.supply-section{background:#fff;border-radius:10px;border:.5px solid var(--border);margin-bottom:10px;overflow:hidden}
-.supply-section-title{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;padding:10px 14px 8px;border-bottom:.5px solid var(--border);font-family:sans-serif;font-weight:600;background:var(--cream2)}
-.supply-item{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;border-bottom:.5px solid rgba(139,107,61,.07);cursor:pointer;transition:background .15s}
-.supply-item:hover{background:var(--cream2)}
+.supply-section-wrap{background:var(--card);border-radius:10px;border:.5px solid var(--border);margin-bottom:10px;overflow:hidden}
+.supply-section-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 8px;border-bottom:.5px solid var(--border);background:var(--bg2);cursor:pointer}
+.supply-section-title{font-size:10px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;font-family:sans-serif;font-weight:600;flex:1}
+.supply-edit-btn{background:none;border:.5px solid var(--border);border-radius:6px;padding:3px 7px;cursor:pointer;color:var(--text-muted);font-size:11px;display:flex;align-items:center;gap:3px;font-family:sans-serif;transition:all .2s;flex-shrink:0}
+.supply-edit-btn:hover{border-color:var(--accent);color:var(--accent)}
+.supply-items-wrap{display:block}
+.supply-item{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;border-bottom:.5px solid rgba(155,142,196,.07);cursor:pointer;transition:background .15s}
+.supply-item:hover{background:var(--bg2)}
 .supply-item:last-child{border-bottom:none}
 .supply-check{width:18px;height:18px;border-radius:4px;border:1px solid var(--border-hover);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;margin-top:1px}
-.supply-item.checked .supply-check{background:var(--gold);border-color:var(--gold)}
+.supply-item.checked .supply-check{background:var(--accent);border-color:var(--accent)}
 .supply-item.checked .supply-check::after{content:'✓';font-size:11px;color:#fff;font-family:sans-serif}
 .supply-name{font-size:13px;color:var(--text-primary);font-family:sans-serif;line-height:1.3}
 .supply-item.checked .supply-name{color:var(--text-muted);text-decoration:line-through}
 .supply-qty{font-size:11px;color:var(--text-muted);min-width:36px;text-align:right;font-family:sans-serif;flex-shrink:0;padding-top:3px}
 
 /* CONTACTS */
-.contacts-wrap{padding:1rem 1.25rem;background:var(--cream)}
-.contact-card{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border-radius:10px;border:.5px solid var(--border);margin-bottom:6px}
-.contact-avatar{width:36px;height:36px;border-radius:50%;background:var(--cream2);border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);flex-shrink:0;font-family:sans-serif;font-weight:600}
+.contacts-wrap{padding:1rem 1.25rem;background:var(--bg)}
+.contact-card{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--card);border-radius:10px;border:.5px solid var(--border);margin-bottom:6px}
+.contact-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg2);border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--accent);flex-shrink:0;font-family:sans-serif;font-weight:600}
 .contact-name{font-size:13px;color:var(--text-primary);font-family:sans-serif;font-weight:500}
 .contact-role{font-size:11px;color:var(--text-muted);font-family:sans-serif;margin-top:1px}
 
 /* ADMIN */
-.admin-section{padding:1rem 1.25rem;background:var(--cream)}
-.admin-card{background:#fff;border:.5px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
-.admin-card-title{font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;font-weight:600;margin-bottom:10px}
+.admin-section{padding:1rem 1.25rem;background:var(--bg)}
+.admin-card{background:var(--card);border:.5px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
+.admin-card-title{font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;font-weight:600;margin-bottom:10px}
 .admin-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:.5px solid var(--border)}
 .admin-row:last-child{border-bottom:none}
 .admin-row-label{font-size:12px;color:var(--text-muted);font-family:sans-serif}
 .admin-row-val{font-size:13px;color:var(--text-primary);font-family:sans-serif;font-weight:500}
-.edit-note{font-size:11px;color:var(--text-secondary);font-family:sans-serif;line-height:1.6;padding:10px 12px;background:var(--cream2);border-radius:8px;border-left:2px solid var(--gold-light)}
+.edit-note{font-size:11px;color:var(--text-secondary);font-family:sans-serif;line-height:1.6;padding:10px 12px;background:var(--bg2);border-radius:8px;border-left:2px solid var(--accent3)}
 .sync-status{display:flex;align-items:center;gap:6px;font-size:11px;font-family:sans-serif;padding:8px 12px;border-radius:8px;margin-bottom:10px}
 .sync-status.online{background:#F0F7F2;color:var(--success)}
-.sync-status.offline{background:#FEF9F0;color:var(--gold)}
+.sync-status.offline{background:#FEF9F0;color:#8B6B3D}
 .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .sync-status.online .sync-dot{background:var(--success)}
-.sync-status.offline .sync-dot{background:var(--gold)}
+.sync-status.offline .sync-dot{background:#8B6B3D}
 
 /* FLOAT SWITCH */
-.float-switch{position:fixed;bottom:80px;right:16px;z-index:100;background:var(--gold);border:none;border-radius:50px;padding:9px 16px 9px 12px;display:flex;align-items:center;gap:6px;font-size:11px;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(139,107,61,.45);font-family:sans-serif;transition:all .2s;white-space:nowrap;font-weight:600;letter-spacing:.5px}
-.float-switch:hover{background:var(--gold-mid);box-shadow:0 6px 20px rgba(139,107,61,.55)}
+.float-switch{position:fixed;bottom:80px;right:16px;z-index:100;background:var(--accent);border:none;border-radius:50px;padding:9px 16px 9px 12px;display:flex;align-items:center;gap:6px;font-size:11px;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(155,142,196,.5);font-family:sans-serif;transition:all .2s;white-space:nowrap;font-weight:600;letter-spacing:.5px}
+.float-switch:hover{background:var(--text-secondary);box-shadow:0 6px 20px rgba(155,142,196,.6)}
 .float-switch i{font-size:15px;color:#fff}
 
 /* LOGOUT */
@@ -167,14 +194,16 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
     <div class="login-divider"></div>
     <div id="role-select">
       <div class="section-label">Wedding Team</div>
-      <button class="login-btn" onclick="selectRole('groomsmen')"><div class="btn-icon">🤵</div><div><div class="btn-label">兄弟 Groomsmen</div><div class="btn-sub">4 brothers · your tasks &amp; rundown</div></div></button>
-      <button class="login-btn" onclick="selectRole('bridesmaids')"><div class="btn-icon">👰</div><div><div class="btn-label">姊妹 Bridesmaids</div><div class="btn-sub">4 sisters · your tasks &amp; rundown</div></div></button>
+      <button class="login-btn" onclick="selectRole('groom')"><div class="btn-icon">🤵</div><div><div class="btn-label">新郎 Harry</div><div class="btn-sub">Groom · your personal rundown</div></div></button>
+      <button class="login-btn" onclick="selectRole('bride')"><div class="btn-icon">👰</div><div><div class="btn-label">新娘 Stephanie</div><div class="btn-sub">Bride · your personal rundown</div></div></button>
+      <button class="login-btn" onclick="selectRole('groomsmen')"><div class="btn-icon">🤝</div><div><div class="btn-label">兄弟 Groomsmen</div><div class="btn-sub">4 brothers · tasks &amp; rundown</div></div></button>
+      <button class="login-btn" onclick="selectRole('bridesmaids')"><div class="btn-icon">💐</div><div><div class="btn-label">姊妹 Bridesmaids</div><div class="btn-sub">4 sisters · tasks &amp; rundown</div></div></button>
       <button class="login-btn" onclick="selectRole('photographer')"><div class="btn-icon">📸</div><div><div class="btn-label">攝影師 Photographer</div><div class="btn-sub">Shot list &amp; key moments</div></div></button>
       <button class="login-btn" onclick="selectRole('mc')"><div class="btn-icon">🎤</div><div><div class="btn-label">MC</div><div class="btn-sub">Full rundown &amp; cues</div></div></button>
       <button class="login-btn" onclick="selectRole('liveband')"><div class="btn-icon">🎵</div><div><div class="btn-label">Live Band</div><div class="btn-sub">Music cues &amp; schedule</div></div></button>
       <div class="section-label">Private Access</div>
-      <button class="login-btn" onclick="showPin('family')" style="border-color:rgba(139,107,61,.3)"><div class="btn-icon">🏠</div><div><div class="btn-label">家人 Family View</div><div class="btn-sub">Full rundown · PIN required</div></div></button>
-      <button class="login-btn" onclick="showPin('admin')" style="border-color:var(--gold-mid)"><div class="btn-icon">👑</div><div><div class="btn-label">Admin — Stephanie &amp; Harry</div><div class="btn-sub">Full access + edit · PIN required</div></div></button>
+      <button class="login-btn" onclick="showPin('family')" style="border-color:rgba(155,142,196,.3)"><div class="btn-icon">🏠</div><div><div class="btn-label">家人 Family View</div><div class="btn-sub">Full rundown · PIN required</div></div></button>
+      <button class="login-btn" onclick="showPin('admin')" style="border-color:var(--accent)"><div class="btn-icon">👑</div><div><div class="btn-label">Admin — Stephanie &amp; Harry</div><div class="btn-sub">Full access + edit · PIN required</div></div></button>
     </div>
     <div id="pin-view" style="display:none;text-align:center;padding-top:1rem">
       <div class="pin-title" id="pin-title">Enter PIN</div>
@@ -200,10 +229,7 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
     <div class="nav-tab" onclick="showTab('contacts')" id="tab-contacts"><i class="ti ti-users"></i>Contacts</div>
     <div class="nav-tab" id="tab-admin-wrap" style="display:none" onclick="showTab('admin')"><i class="ti ti-settings"></i>Admin</div>
   </div>
-
-  <button class="float-switch" id="float-switch-btn" onclick="logout()" style="display:none">
-    <i class="ti ti-refresh"></i> Switch role
-  </button>
+  <button class="float-switch" id="float-switch-btn" onclick="logout()" style="display:none"><i class="ti ti-refresh"></i> Switch role</button>
 
   <!-- TIMELINE TAB -->
   <div id="tab-content-timeline">
@@ -224,7 +250,7 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
 
   <!-- SUPPLIES TAB -->
   <div id="tab-content-supplies" style="display:none">
-    <div class="page-header"><h2>物資 Checklist</h2><p>Tap to check off · Synced in real-time</p></div>
+    <div class="page-header"><h2>物資 Checklist</h2><p>Tap to check · Edit to update items</p></div>
     <div class="supplies-wrap">
       <div class="reset-bar">
         <div class="progress-text">Checked: <span class="progress-count" id="check-count">0</span> / <span id="check-total">0</span></div>
@@ -242,12 +268,9 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
 
   <!-- ADMIN TAB -->
   <div id="tab-content-admin" style="display:none">
-    <div class="page-header"><h2>Admin</h2><p>Full access + edit · Stephanie &amp; Harry</p></div>
+    <div class="page-header"><h2>Admin</h2><p>Full access + edit</p></div>
     <div class="admin-section">
-      <div class="sync-status online" id="sync-status-badge">
-        <div class="sync-dot"></div>
-        <span id="sync-status-text">Connected to Firebase</span>
-      </div>
+      <div class="sync-status online" id="sync-status-badge"><div class="sync-dot"></div><span id="sync-status-text">Connected to Firebase</span></div>
       <div class="admin-card">
         <div class="admin-card-title">Wedding Details</div>
         <div class="admin-row"><span class="admin-row-label">Bride</span><span class="admin-row-val">Stephanie</span></div>
@@ -259,16 +282,16 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
       </div>
       <div class="admin-card">
         <div class="admin-card-title">PIN Codes</div>
-        <div class="admin-row"><span class="admin-row-label">Admin PIN</span><span class="admin-row-val" style="color:var(--gold);font-weight:600">0801</span></div>
-        <div class="admin-row"><span class="admin-row-label">Family PIN</span><span class="admin-row-val" style="color:var(--gold);font-weight:600">1234</span></div>
+        <div class="admin-row"><span class="admin-row-label">Admin PIN</span><span class="admin-row-val" style="color:var(--accent);font-weight:600">0801</span></div>
+        <div class="admin-row"><span class="admin-row-label">Family PIN</span><span class="admin-row-val" style="color:var(--accent);font-weight:600">1234</span></div>
       </div>
-      <div class="edit-note">✏️ To edit any time block, go to Timeline tab and tap the pencil icon on any block. Changes sync instantly to all users.</div>
+      <div class="edit-note">✏️ Timeline: tap pencil on any block. Supplies: tap pencil on any section header. Changes sync instantly to all users.</div>
     </div>
     <button class="logout-btn" onclick="logout()"><i class="ti ti-logout"></i> Sign out</button>
   </div>
 </div>
 
-<!-- EDIT MODAL -->
+<!-- EDIT MODAL (timeline) -->
 <div class="modal-overlay hidden" id="edit-modal">
   <div class="modal-sheet">
     <div class="modal-header">
@@ -281,51 +304,96 @@ html,body{height:100%;background:var(--cream);font-family:'Georgia',serif}
   </div>
 </div>
 
+<!-- EDIT MODAL (supplies) -->
+<div class="modal-overlay hidden" id="supply-edit-modal">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <div class="modal-title" id="supply-modal-title">Edit Supplies</div>
+      <button class="modal-close" onclick="closeSupplyModal()">✕</button>
+    </div>
+    <div class="modal-section-label">One item per line. Format: Item name | qty (qty optional)</div>
+    <textarea class="modal-textarea" id="supply-edit-textarea" style="min-height:200px;margin-top:8px"></textarea>
+    <button class="modal-save-btn" onclick="saveSupplyEdits()"><i class="ti ti-check"></i> Save &amp; Sync</button>
+    <div class="saving-indicator" id="supply-saving-indicator"></div>
+  </div>
+</div>
+
 <!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, get, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAgDYDfM95eH4b-DvT1tTMq8TMDUC0ndJQ",
-  authDomain: "wedding-aug2026.firebaseapp.com",
-  databaseURL: "https://wedding-aug2026-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "wedding-aug2026",
-  storageBucket: "wedding-aug2026.firebasestorage.app",
-  messagingSenderId: "495349464247",
-  appId: "1:495349464247:web:38e43a971fe19129bd6132"
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getDatabase(firebaseApp);
-
-window._db = db;
-window._dbRef = ref;
-window._dbSet = set;
-window._dbGet = get;
-window._dbOnValue = onValue;
-window._dbUpdate = update;
-window._firebaseReady = true;
-window.dispatchEvent(new Event('firebaseReady'));
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const firebaseConfig={apiKey:"AIzaSyAgDYDfM95eH4b-DvT1tTMq8TMDUC0ndJQ",authDomain:"wedding-aug2026.firebaseapp.com",databaseURL:"https://wedding-aug2026-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"wedding-aug2026",storageBucket:"wedding-aug2026.firebasestorage.app",messagingSenderId:"495349464247",appId:"1:495349464247:web:38e43a971fe19129bd6132"};
+const firebaseApp=initializeApp(firebaseConfig);
+const db=getDatabase(firebaseApp);
+window._db=db;window._dbRef=ref;window._dbSet=set;window._dbOnValue=onValue;
+window._firebaseReady=true;window.dispatchEvent(new Event('firebaseReady'));
 </script>
 
 <script>
 const PINS={admin:'0801',family:'1234'};
 let currentRole=null,pinTarget=null,pinBuffer='';
 let currentFilter='all';
-let editingBlockIdx=null;
-let localOverrides={};
+let editingBlockIdx=null,editingSupplyIdx=null;
 let checkedItems={};
 
-const ROLE_NAMES={groomsmen:'兄弟 Groomsmen',bridesmaids:'姊妹 Bridesmaids',photographer:'攝影師 Photographer',mc:'MC',liveband:'Live Band',family:'家人 Family View',admin:'Admin'};
+const ROLE_NAMES={
+  groom:'新郎 Harry',bride:'新娘 Stephanie',
+  groomsmen:'兄弟 Groomsmen',bridesmaids:'姊妹 Bridesmaids',
+  photographer:'攝影師 Photographer',mc:'MC',liveband:'Live Band',
+  family:'家人 Family View',admin:'Admin'
+};
 const EDITABLE_ROLES=['groomsmen','bridesmaids','photographer','mc','liveband'];
+
+// Couple tasks per block — shown to all roles as "新人動態"
+const COUPLE_TASKS={
+  0:{groom:['化妝、換馬褂準備'],bride:['化妝、造型']},
+  1:{groom:['出發 Maison Jardin'],bride:['出發 Maison Jardin']},
+  2:{groom:['換馬褂'],bride:['補妝，着下身掛']},
+  3:{groom:['著褂拍攝'],bride:['著褂拍攝，爸爸幫着褂']},
+  4:{groom:['斟茶俾長輩'],bride:['斟茶俾長輩']},
+  5:{groom:['換西裝'],bride:['換婚紗']},
+  6:{groom:['乘 shuttle 往 Maison Jardin'],bride:['乘 shuttle 往 Maison Jardin']},
+  7:{groom:['First Look — stand by 喺父母後面'],bride:['First Look — stand by 喺父母後面']},
+  8:{groom:['迎賓 standby'],bride:['迎賓 standby']},
+  9:{groom:['就位準備證婚'],bride:['就位，爸爸蓋頭紗']},
+  10:{groom:['就位準備進場'],bride:['就位準備進場']},
+  11:{groom:['證婚儀式 — 進場、誓詞、戒指、March out'],bride:['證婚儀式 — 爸爸陪同進場、誓詞、戒指、揭頭紗、送花球']},
+  12:{groom:['Tiramisu Tower 儀式'],bride:['Tiramisu Tower 儀式']},
+  13:{groom:['單獨拍攝'],bride:['單獨拍攝、電話留言']},
+  14:{groom:['兄弟姊妹合照'],bride:['兄弟姊妹合照']},
+  15:{groom:['賓客合照'],bride:['賓客合照']},
+  16:{groom:['請賓客入座'],bride:['請賓客入座']},
+  17:{groom:['進場晚宴'],bride:['進場晚宴']},
+  18:{groom:['觀看 Q&A 片段'],bride:['觀看 Q&A 片段']},
+  19:{groom:['Thank You Speech'],bride:['Thank You Speech']},
+  20:{groom:['繼續食飯'],bride:['換晚裝']},
+  21:{groom:['Second March In，First Dance'],bride:['Second March In，First Dance']},
+  22:{groom:['羽毛球抽利是 — 台上發球'],bride:['羽毛球抽利是 — 台上發球']},
+  23:{groom:['落枱敬酒'],bride:['落枱敬酒']},
+  24:{groom:['仙女棒 — 穿越 corridor'],bride:['仙女棒 — 穿越 corridor']},
+  25:{groom:['送客'],bride:['送客']},
+  26:{groom:['離場'],bride:['離場']}
+};
+
+const LUCKY_PHRASES={
+  '見到新郎（女家）':['嫁個女多個仔，以後大把錢你洗。'],
+  '飲茶時':['茶到口，財到手。','茶到口，財到手，買田又買樓。','茶到口，財神走到大門口。','茶到口，甜到漏。','茶到口，出年又飲滿月酒。','飲深Ｄ，賺多Ｄ。','一啖飲到尾，年頭賺到去年尾。','飲茶到口，橫財就手。','飲茶到口，得心又應手。'],
+  '女家斟茶':['飲過女婿茶，發到笑 kaka。','飲茶好輕鬆，出年做公公。','飲茶笑呵呵，好快做婆婆。','飲過乖仔／女茶，一世有渣拿。'],
+  '合照（八隻手）':['八隻手，發到夠。','八隻手，乜都有。'],
+  '見到新娘（男家）':['見到靚新抱，好快有孫抱。'],
+  '男家斟茶':['飲茶笑騎騎，好快做爺爺。','飲過新抱茶，富貴又榮華。','飲過新人茶，孫仔四圍爬。','飲過新抱茶，好快做嫲嫲。'],
+  '男家斟茶完畢':['恭喜新郎哥，新郎今日小登科，娶個老婆生仔多，有男有女個個好，橫財就手中多多。'],
+  '各親戚敬茶':['湛茶比大伯，等佢越嚟越大發。','斟茶比姨媽，出年幫手抱酥蝦。','斟茶比姨丈，買六合彩中頭獎。','斟茶比叔叔，等佢年年換大屋。','斟茶比舅父，等佢買股票唔使估。','斟茶比舅母，青春唔會老。','湛茶比家姐，日日揸靚車。','飲過新娘茶，靚過林青霞。','飲過新郎茶，型仔過劉德華。','飲過新人茶，馬仔聽你話。'],
+  '收利是':['接過利是封，好快做富翁。','接過利是封，生活似富翁。'],
+  '戴金':['戴起大囍，戴到兒孫滿地。','戴起大囍，戴到風生水起。','戴起大囍，戴到金銀遍地。','金扼夾到手，BB好快有。','金扼夾到手，買多幾層樓。','龍鳳扼（鐲）一對，夫妻好登對。','戴過金手鍊，有錢又有面。','戴過金頸鍊，個個都比面。','戴過金戒指，生個金童子。','金戒戴上，三年抱兩。','戴上金耳環，名牌手袋任你挽。','戴個大金牌，一世唔洗捱。']
+};
 
 const TIMELINE_DEFAULT=[
   {time:'tbc',title:'化妝 & 準備',section:'morning',tasks:{groomsmen:['兩個兄弟攞 Tiramisu with extra cocoa powder，出發 Maison Jardin，到達後存放雪櫃'],bridesmaids:['新娘化妝、新郎、奶奶、四個姊妹化妝 @LCK','記得叫飯'],photographer:['拍攝新娘化妝過程（getting ready shots）'],mc:['確認音響設備及 USB 已交場地'],liveband:['到場 setup，完成 soundcheck']}},
   {time:'13:15',title:'出發 Maison Jardin',section:'morning',tasks:{groomsmen:['Call 車 & 拎物資','Confirm 拎齊所有物資','帶齊四大長老、兄弟姊妹，帶齊襟花'],bridesmaids:['確認帶齊所有服裝及個人物資，帶齊襟花'],photographer:['確認器材電量及儲存空間'],mc:['確認到場時間'],liveband:['繼續 setup']}},
   {time:'14:30',title:'場地交場 · 斟茶 Setting',section:'morning',tasks:{groomsmen:['搬運物資入場地'],bridesmaids:['tms, csk: 貼囍字上梳化後面玻璃（美紋紙黐係玻璃，雙面膠紙黐囍字落玻璃），囍字枱面裝飾','ksn, cosette: 婚紗西裝頭紗掛起，蒸氣熨（婚紗西裝優先）','新娘：補妝，着下身掛；新郎：換馬褂'],photographer:['拍攝場地佈置過程'],mc:['與場地工作人員確認 setup'],liveband:['完成 soundcheck']},supplies:['囍字','美紋紙','雙面膠紙','蒸氣熨']},
   {time:'14:40',title:'新娘新郎著褂拍攝',section:'morning',tasks:{groomsmen:['準備斟茶用品：紅跪墊、茶壺及茶具、紙茶杯、烏龍茶、蓮子紅棗（每杯茶放入兩粒蓮子及兩粒紅棗）、label & pen'],bridesmaids:['新娘爸爸、tms：幫新娘着褂','協助準備斟茶用品'],photographer:['拍攝新娘新郎著褂拍攝全套，互相整理衣著特寫'],mc:[],liveband:[]},supplies:['紅跪墊','茶壺及茶具','紙茶杯','烏龍茶','蓮子','紅棗','label & pen'],camera:'拍攝著褂全過程及互相整理衣著特寫'},
-  {time:'15:10',title:'斟茶',section:'ceremony',tasks:{groomsmen:['準備茶水杯子'],bridesmaids:['tms（大妗姐）：講吉利說話','csk：遞茶杯','ksn & cosette：負責幫忙戴金器及 label 記錄保管金器利是'],photographer:['拍攝每對長輩敬茶神情','捕捉金器戴上一刻特寫','拍攝大妗姐講吉利說話表情'],mc:[],liveband:[]},notes:'敬茶順序：1. 女家爸爸 → 2. 男家父母 → 3. 女家姑媽 tbc（4手一杯敬茶）→ 4. 男家母母 → 5. 男家梁舅父 → 6. 男家波舅父 → 7. 男家 Jovi → 8. 男家 Mo → 9. 男家麥家 → 10. 女家哥哥 → 11. 男家家姐哥哥',camera:'必拍：每對長輩接茶神情、金器戴上特寫'},
+  {time:'15:10',title:'斟茶',section:'ceremony',tasks:{groomsmen:['準備茶水杯子'],bridesmaids:['tms（大妗姐）：講吉利說話','csk：遞茶杯','ksn & cosette：負責幫忙戴金器及 label 記錄保管金器利是'],photographer:['拍攝每對長輩敬茶神情','捕捉金器戴上一刻特寫','拍攝大妗姐講吉利說話表情'],mc:[],liveband:[]},notes:'敬茶順序：1. 女家爸爸 → 2. 男家父母 → 3. 女家姑媽 tbc（4手一杯敬茶）→ 4. 男家母母 → 5. 男家梁舅父 → 6. 男家波舅父 → 7. 男家 Jovi → 8. 男家 Mo → 9. 男家麥家 → 10. 女家哥哥 → 11. 男家家姐哥哥',camera:'必拍：每對長輩接茶神情、金器戴上特寫',showLucky:true},
   {time:'16:00',title:'新娘換婚紗 · Welcome Table 佈置',section:'ceremony',tasks:{groomsmen:['兄弟佈置 welcome table，check 場地','Welcome table 物資：guest list、人情箱、人情 label、pen、菲林相機、paper fan、tissue、（place card）、電話留言機+guide、羽毛球拍四支、羽毛球四個、花瓣','Tiramisu 於冷氣地方砌好喺圓枱，準備好朱古力粉、sift、匙羹'],bridesmaids:['姊妹燙頭紗','手寫信入 seating plan envelope','音樂 USB and list 比工作人員','Set up 完返新娘房影 Get Ready Shoot','tms：妥善放好金器利是喺新娘房'],photographer:['拍攝新娘換婚紗過程','⚠️ 新郎及所有父母嚴禁進入新娘房'],mc:['準備開咪，確認 cue sheet'],liveband:['準備就緒，等開場 cue']},alert:'⚠️ 新郎及所有父母嚴禁進入新娘房！！！！！！',supplies:['guest list','人情箱','人情 label','pen','菲林相機','paper fan','tissue','place card','電話留言機+guide','羽毛球拍 x4','羽毛球 x4','花瓣','比 DECO 物資']},
   {time:'16:20–17:10',title:'Shuttle 開車 @朗豪坊',section:'ceremony',tasks:{groomsmen:['乘坐 shuttle，車程約 50 分鐘'],bridesmaids:['乘坐 shuttle，車程約 50 分鐘'],photographer:['乘坐 shuttle'],mc:['乘坐 shuttle'],liveband:[]},notes:'Shuttle 由朗豪坊出發，車程約 50 分鐘'},
   {time:'16:50–17:10',title:'First Look — 新郎、雙方父母',section:'ceremony',tasks:{groomsmen:['cassette 帶 x2 交俾雙方父母，指引佢哋點樣撳 play','兄弟各一企喺旁邊，等兩邊父母聽完叫佢哋擰轉頭','新郎新娘喺父母後面 stand by，一齊走向雙方父母'],bridesmaids:['csk：wedding content creator 拍攝','cassette 帶 x2 交俾雙方父母，指引佢哋點樣撳 play','姊妹各一企喺旁邊，等兩邊父母聽完叫佢哋擰轉頭','新郎新娘喺父母後面 stand by，一齊走向雙方父母'],photographer:['First look — 新郎先','拍攝雙方父母聆聽 cassette 表情','拍攝新郎新娘喺父母後面 stand by','捕捉父母擰轉頭第一眼反應（雙方各一）'],mc:[],liveband:[]},supplies:['cassette 帶 x2'],camera:'必拍：父母擰轉頭第一眼神情（雙方各一）、新郎新娘走向父母一刻'},
@@ -350,16 +418,18 @@ const TIMELINE_DEFAULT=[
   {time:'23:00',title:'⚠️ 場地交還 — 硬死線',section:'banquet',tasks:{groomsmen:['所有人員及物品須於此前離場完畢'],bridesmaids:['所有人員及物品須於此前離場完畢'],photographer:['所有人員及物品須於此前離場完畢'],mc:['所有人員及物品須於此前離場完畢'],liveband:['所有人員及物品須於此前離場完畢']},alert:'⚠️ 硬死線 23:00 — 所有人員及物品須於此前離場完畢'}
 ];
 
-const SUPPLIES=[
+let TIMELINE=[...TIMELINE_DEFAULT.map(b=>JSON.parse(JSON.stringify(b)))];
+
+let SUPPLIES_DATA=[
   {section:'袋 #1 — 新娘隨身',items:[{name:'利是',qty:'若干'},{name:'充電器',qty:'x2'},{name:'紙巾',qty:'1包'},{name:'濕紙巾',qty:'1包'},{name:'電話',qty:''},{name:'風扇仔',qty:'1把'}]},
   {section:'袋 #2 — 新娘衣物',items:[{name:'婚紗',qty:'1件'},{name:'頭紗',qty:'1件'},{name:'耳環',qty:''},{name:'褂（新娘）',qty:'1件'},{name:'紅睡衣',qty:'1件'},{name:'褂鞋',qty:'1對'},{name:'褂扇',qty:''},{name:'Pink 晚裝（新娘）',qty:'1件'},{name:'新娘便服',qty:'1件'},{name:'平底鞋（新娘備用）',qty:'1對'},{name:'高踭鞋（新娘）',qty:'1對'},{name:'鞋踭套',qty:'1對'},{name:'後踭貼',qty:'1對'},{name:'高踭鞋帶（新娘）',qty:'1對'},{name:'塑身衣',qty:'1件'},{name:'Nude bra',qty:'1件'},{name:'防走光 tape',qty:'1卷'},{name:'飲管',qty:'1支'},{name:'隱形眼鏡備用',qty:'x2對'},{name:'眼藥水',qty:'1支'}]},
   {section:'袋 #3 — 新郎衣物',items:[{name:'西裝全套（打底+tie+shirt+馬甲+西褲+黑襪）',qty:'1套'},{name:'馬褂（新郎）',qty:'1件'},{name:'新郎皮鞋',qty:'1對'},{name:'熨斗',qty:'1部'},{name:'新郎鼻毛鉸剪',qty:''},{name:'新郎新娘衣架',qty:'x2'},{name:'新郎襟花',qty:'x1'},{name:'父母襟花',qty:'x3'},{name:'兄弟姊妹襟花',qty:'x8'}]},
   {section:'袋 #4 — 攝影師道具',items:[{name:'Paper fan',qty:'x1'},{name:'Place card：groom + bride',qty:'x2'},{name:'Ring box + rings',qty:''},{name:'Paper umbrella',qty:'x5'},{name:'仙女棒',qty:'若干'},{name:'打火機',qty:'x8'}]},
-  {section:'袋 #5 — 斟茶',items:[{name:'爸爸龍鳳鈪（from tms）',qty:''},{name:'囍字裝飾',qty:'若干'},{name:'津露烏龍茶',qty:'2大支'},{name:'紙茶杯',qty:'12個'},{name:'紅棗',qty:'1包'},{name:'蓮子',qty:'1包'},{name:'結婚公仔 & 婚紗西裝',qty:''}]},
-  {section:'袋 #6 — 證婚儀式',items:[{name:'Ring Warming 絲帶（建議 8–10 米緞帶）',qty:'1條'},{name:'花球',qty:'1個'},{name:'誓詞卡（Vow）',qty:'x2'},{name:'Thank you speech 稿',qty:'x2'},{name:'父母 First Look 錄音帶',qty:'x2'},{name:'Tiramisu tower',qty:''},{name:'粉 sift、朱古力粉、匙羹',qty:''},{name:'菲林相機',qty:'x8'},{name:'禮金箱',qty:'1個'},{name:'禮金 label',qty:'1包'},{name:'Pen',qty:'x5'},{name:'Rundown',qty:'x4份'},{name:'賓客名單',qty:'x4份'},{name:'Seating plan',qty:'x4份'},{name:'USB（Q&A video + songs），一主一備',qty:'x2'}]},
+  {section:'袋 #5 — 斟茶',items:[{name:'爸爸龍鳳鈪（from tms）',qty:''},{name:'囍字裝飾',qty:'若干'},{name:'津露烏龍茶',qty:'2大支'},{name:'紙茶杯',qty:'12個'},{name:'紅棗',qty:'1包'},{name:'蓮子',qty:'1包'},{name:'結婚公仔 & 婚紗西裝',qty:''},{name:'吉利說話卡',qty:'1份'}]},
+  {section:'袋 #6 — 證婚儀式',items:[{name:'Ring Warming 絲帶（建議 8–10 米緞帶）',qty:'1條'},{name:'花球',qty:'1個'},{name:'誓詞卡（Vow）',qty:'x2'},{name:'Thank you speech 稿',qty:'x2'},{name:'父母 First Look 錄音帶',qty:'x2'},{name:'Tiramisu tower',qty:''},{name:'粉 sift、朱古力粉、匙羹',qty:''},{name:'菲林相機',qty:'x8'},{name:'禮金箱',qty:'1個'},{name:'禮金 label',qty:'1包'},{name:'Pen',qty:'x5'},{name:'Rundown',qty:'x4份'},{name:'賓客名單',qty:'x4份'},{name:'Seating plan',qty:'x4份'},{name:'USB（Q&A video + songs），一主一備',qty:'x2'},{name:'蚊怕水（袋6用）',qty:'x2'}]},
   {section:'袋 #7 — 比 DECO 公司（Ann）',items:[{name:'Place card',qty:''},{name:'Bride Groom seat ribbon',qty:''},{name:'Paper fan',qty:''},{name:'花瓣 + cone',qty:''},{name:'客製化紙巾',qty:'150包'},{name:'電話留言機',qty:''},{name:'電話留言機 guide',qty:''},{name:'Guest letter',qty:''},{name:'羽毛球拍',qty:'x4'},{name:'羽毛球',qty:'x4'}]},
   {section:'袋 #8 — 晚宴抽獎',items:[{name:'羽毛球（各掛一條鎖匙）',qty:'x3'},{name:'真鎖匙',qty:'x1'},{name:'假鎖匙',qty:'x2'},{name:'上鎖箱子（內放大利是）',qty:'x1'},{name:'大利是',qty:'x1'},{name:'細利是（安慰獎）',qty:'x2'},{name:'綁鎖匙用繩/膠圈',qty:'x3'}]},
-  {section:'個人護理',items:[{name:'蚊怕水',qty:'x5'},{name:'解酒藥',qty:'20粒'},{name:'止痛藥',qty:'10粒'},{name:'紙巾（普通）',qty:'10包'},{name:'濕紙巾',qty:'兩包'},{name:'Gatsby 冰爽濕紙巾',qty:'三包'},{name:'風扇仔',qty:'兩把'},{name:'Snacks（新人補充能量）',qty:'若干'}]},
+  {section:'個人護理',items:[{name:'蚊怕水',qty:'x1'},{name:'解酒藥',qty:'20粒'},{name:'止痛藥',qty:'10粒'},{name:'紙巾（普通）',qty:'10包'},{name:'濕紙巾',qty:'兩包'},{name:'Gatsby 冰爽濕紙巾',qty:'三包'},{name:'風扇仔',qty:'兩把'},{name:'Snacks（新人補充能量）',qty:'若干'}]},
   {section:'文具 & 急救',items:[{name:'Label 貼紙',qty:'1包'},{name:'Marker 粗筆',qty:'x3'},{name:'筆',qty:'x6'},{name:'膠紙',qty:'x2卷'},{name:'Blu-tack',qty:'1包'},{name:'剪刀',qty:'x2'},{name:'針線包',qty:'1套'},{name:'Plasters',qty:'1盒'},{name:'美紋紙',qty:'1卷'},{name:'叉電器',qty:'x2'}]},
   {section:'影音及播放',items:[{name:'Q&A 影片（完成版，MP4）',qty:'1份'},{name:'First dance 歌曲',qty:'1首'},{name:'全日歌曲 + 重要時刻時間點（USB + excel）',qty:''},{name:'備用 USB（存放所有影片及音樂，一主一備）',qty:'x2'},{name:'螢幕/投影確認（與場地確認播放設備及解析度）',qty:'—'}]}
 ];
@@ -386,18 +456,11 @@ const CONTACTS=[
   {name:'Zerious',role:'Live Band',initials:'Z',phone:'70735503'}
 ];
 
-// ─── State ───────────────────────────────────────────────
-let TIMELINE=[...TIMELINE_DEFAULT.map(b=>JSON.parse(JSON.stringify(b)))];
 let firebaseListenerAttached=false;
-
-// ─── Firebase listeners ──────────────────────────────────
 function attachFirebaseListeners(){
   if(firebaseListenerAttached||!window._firebaseReady)return;
   firebaseListenerAttached=true;
-  console.log('[Wedding App] Firebase listeners attached');
   const db=window._db;
-
-  // Timeline overrides
   window._dbOnValue(window._dbRef(db,'timeline'),(snap)=>{
     if(snap.exists()){
       const data=snap.val();
@@ -407,18 +470,15 @@ function attachFirebaseListeners(){
           if(data[i].tasks){
             Object.keys(data[i].tasks).forEach(function(role){
               const t=data[i].tasks[role];
-              // ['__empty__'] sentinel means intentionally blank
-              if(Array.isArray(t)&&t.length===1&&t[0]==='__empty__'){
-                mergedTasks[role]=[];
-              } else if(Array.isArray(t)){
-                mergedTasks[role]=t;
-              } else {
-                mergedTasks[role]=[];
-              }
+              if(Array.isArray(t)&&t.length===1&&t[0]==='__empty__'){mergedTasks[role]=[];}
+              else if(Array.isArray(t)){mergedTasks[role]=t;}
+              else{mergedTasks[role]=[];}
             });
           }
           return Object.assign({},block,{
             tasks:mergedTasks,
+            time:data[i].time&&data[i].time.trim()?data[i].time.trim():block.time,
+            title:data[i].title&&data[i].title.trim()?data[i].title.trim():block.title,
             notes:data[i].notes!==undefined?data[i].notes:block.notes,
             alert:data[i].alert!==undefined?data[i].alert:block.alert,
             camera:data[i].camera!==undefined?data[i].camera:block.camera
@@ -429,108 +489,119 @@ function attachFirebaseListeners(){
     }
     if(currentRole)renderTimeline(currentRole,currentFilter);
   });
-
-  // Checkbox sync
+  window._dbOnValue(window._dbRef(db,'supplies'),(snap)=>{
+    if(snap.exists()){
+      const data=snap.val();
+      SUPPLIES_DATA=SUPPLIES_DATA.map((sec,si)=>{
+        if(data[si]&&data[si].items){return Object.assign({},sec,{items:data[si].items});}
+        return sec;
+      });
+      if(currentRole)renderSupplies();
+    }
+  });
   window._dbOnValue(window._dbRef(db,'checks'),(snap)=>{
     checkedItems=snap.exists()?snap.val():{};
-    renderCheckStates();
-    updateCheckCount();
+    renderCheckStates();updateCheckCount();
   });
-
-  // Sync status
   window._dbOnValue(window._dbRef(db,'.info/connected'),(snap)=>{
     const online=snap.val()===true;
     const badge=document.getElementById('sync-status-badge');
     const txt=document.getElementById('sync-status-text');
-    if(badge&&txt){
-      badge.className='sync-status '+(online?'online':'offline');
-      txt.textContent=online?'Connected to Firebase':'Offline — changes will sync when reconnected';
-    }
+    if(badge&&txt){badge.className='sync-status '+(online?'online':'offline');txt.textContent=online?'Connected to Firebase':'Offline — changes will sync when reconnected';}
   });
 }
-
 window.addEventListener('firebaseReady',attachFirebaseListeners);
 if(window._firebaseReady)attachFirebaseListeners();
 
-// ─── Login ───────────────────────────────────────────────
+// ─── Login ────────────────────────────────────────────────
 function selectRole(r){currentRole=r;enterApp();}
-function showPin(t){
-  pinTarget=t;pinBuffer='';
-  document.getElementById('pin-view').style.display='block';
-  document.getElementById('role-select').style.display='none';
-  document.getElementById('pin-title').textContent=t==='admin'?'Admin Access':'Family Access';
-  document.getElementById('pin-sub').textContent=t==='admin'?'Enter admin PIN':'Enter family PIN';
-  document.getElementById('pin-error').textContent='';
-  updateDots();
-}
+function showPin(t){pinTarget=t;pinBuffer='';document.getElementById('pin-view').style.display='block';document.getElementById('role-select').style.display='none';document.getElementById('pin-title').textContent=t==='admin'?'Admin Access':'Family Access';document.getElementById('pin-sub').textContent=t==='admin'?'Enter admin PIN':'Enter family PIN';document.getElementById('pin-error').textContent='';updateDots();}
 function backToRoles(){document.getElementById('pin-view').style.display='none';document.getElementById('role-select').style.display='block';pinBuffer='';}
 function pinPress(v){if(v==='back')pinBuffer=pinBuffer.slice(0,-1);else if(v==='clear')pinBuffer='';else if(pinBuffer.length<4)pinBuffer+=v;updateDots();if(pinBuffer.length===4)setTimeout(checkPin,200);}
 function updateDots(){for(let i=0;i<4;i++)document.getElementById('dot-'+i).classList.toggle('filled',i<pinBuffer.length);}
-function checkPin(){
-  if(pinBuffer===PINS[pinTarget]){currentRole=pinTarget;document.getElementById('pin-error').textContent='';enterApp();}
-  else{document.getElementById('pin-error').textContent='Incorrect PIN. Please try again.';pinBuffer='';updateDots();}
-}
+function checkPin(){if(pinBuffer===PINS[pinTarget]){currentRole=pinTarget;document.getElementById('pin-error').textContent='';enterApp();}else{document.getElementById('pin-error').textContent='Incorrect PIN. Please try again.';pinBuffer='';updateDots();}}
 function enterApp(){
   document.getElementById('screen-login').classList.remove('active');
   document.getElementById('screen-main').classList.add('active');
   document.getElementById('tab-admin-wrap').style.display=currentRole==='admin'?'flex':'none';
   document.getElementById('float-switch-btn').style.display='flex';
   document.getElementById('role-badge-tl').textContent=ROLE_NAMES[currentRole]||currentRole;
-  renderTimeline(currentRole,'all');
-  renderSupplies();
-  renderContacts();
-  showTab('timeline');
+  renderTimeline(currentRole,'all');renderSupplies();renderContacts();showTab('timeline');
 }
-function logout(){
-  currentRole=null;pinBuffer='';
-  document.getElementById('screen-main').classList.remove('active');
-  document.getElementById('screen-login').classList.add('active');
-  document.getElementById('pin-view').style.display='none';
-  document.getElementById('role-select').style.display='block';
-  document.getElementById('float-switch-btn').style.display='none';
+function logout(){currentRole=null;pinBuffer='';document.getElementById('screen-main').classList.remove('active');document.getElementById('screen-login').classList.add('active');document.getElementById('pin-view').style.display='none';document.getElementById('role-select').style.display='block';document.getElementById('float-switch-btn').style.display='none';}
+
+// ─── Nav ──────────────────────────────────────────────────
+function showTab(t){['timeline','supplies','contacts','admin'].forEach(x=>{const e=document.getElementById('tab-content-'+x);const b=document.getElementById('tab-'+x)||document.getElementById('tab-admin-wrap');if(e)e.style.display='none';if(b)b.classList.remove('active');});const e=document.getElementById('tab-content-'+t);const b=document.getElementById('tab-'+t)||document.getElementById('tab-admin-wrap');if(e)e.style.display='block';if(b)b.classList.add('active');}
+function filterSection(chip,s){currentFilter=s;document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));chip.classList.add('active');renderTimeline(currentRole,s);}
+
+// ─── Timeline ─────────────────────────────────────────────
+let openBlockId=null;
+function toggleBlock(el,id){
+  if(openBlockId!==null&&openBlockId!==id){
+    const prev=document.getElementById('block-'+openBlockId);
+    if(prev)prev.classList.remove('open');
+  }
+  el.classList.toggle('open');
+  openBlockId=el.classList.contains('open')?id:null;
 }
 
-// ─── Nav ─────────────────────────────────────────────────
-function showTab(t){
-  ['timeline','supplies','contacts','admin'].forEach(x=>{
-    const e=document.getElementById('tab-content-'+x);
-    const b=document.getElementById('tab-'+x)||document.getElementById('tab-admin-wrap');
-    if(e)e.style.display='none';
-    if(b)b.classList.remove('active');
-  });
-  const e=document.getElementById('tab-content-'+t);
-  const b=document.getElementById('tab-'+t)||document.getElementById('tab-admin-wrap');
-  if(e)e.style.display='block';
-  if(b)b.classList.add('active');
-}
-function filterSection(chip,s){
-  currentFilter=s;
-  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');
-  renderTimeline(currentRole,s);
-}
-
-// ─── Timeline render ──────────────────────────────────────
 function renderTimeline(role,section){
   const c=document.getElementById('timeline-content');
   const isAdmin=role==='admin';
   const isAll=role==='family'||isAdmin;
+  const isCouple=role==='groom'||role==='bride';
   const filtered=section==='all'?TIMELINE:TIMELINE.filter(b=>b.section===section);
-  c.innerHTML=filtered.map((block,rawIdx)=>{
+  c.innerHTML=filtered.map((block)=>{
     const globalIdx=TIMELINE.indexOf(block);
-    let tasks;
+    let myTasks='',coupleBand='';
+
     if(isAll){
-      tasks=Object.entries(block.tasks).filter(([r,t])=>t.length>0)
+      // Show all roles
+      myTasks=Object.entries(block.tasks).filter(([r,t])=>t.length>0)
         .map(([r,t])=>`<div class="role-group"><div class="role-group-label">${ROLE_NAMES[r]||r}</div>${t.map(t=>`<div class="task-item">${t}</div>`).join('')}</div>`).join('');
-      if(!tasks)tasks='<div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;font-style:italic">No tasks for this slot.</div>';
+      if(!myTasks)myTasks='<div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;font-style:italic">No tasks for this slot.</div>';
+      // Couple tasks for all/admin
+      const ct=COUPLE_TASKS[globalIdx];
+      if(ct){
+        coupleBand=`<div class="couple-item"><div class="couple-item-label">💑 新人動態</div>`;
+        if(ct.groom&&ct.groom.length)coupleBand+=`<div style="margin-bottom:2px"><span style="color:var(--accent);font-size:10px;font-family:sans-serif">新郎：</span><span style="font-size:12px;font-family:sans-serif">${ct.groom.join('、')}</span></div>`;
+        if(ct.bride&&ct.bride.length)coupleBand+=`<div><span style="color:var(--blush);font-size:10px;font-family:sans-serif">新娘：</span><span style="font-size:12px;font-family:sans-serif">${ct.bride.join('、')}</span></div>`;
+        coupleBand+='</div>';
+      }
+    } else if(isCouple){
+      // Groom/Bride personal view
+      const ct=COUPLE_TASKS[globalIdx];
+      const personal=ct?ct[role]||[]:[];
+      myTasks=personal.length?personal.map(t=>`<div class="task-item">${t}</div>`).join(''):'<div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;font-style:italic">自由時間 ✨</div>';
     } else {
+      // Team role view
       const rt=block.tasks[role]||[];
-      tasks=rt.length?rt.map(t=>`<div class="task-item">${t}</div>`).join(''):'<div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;font-style:italic">No specific tasks for your role at this time.</div>';
+      myTasks=rt.length?rt.map(t=>`<div class="task-item">${t}</div>`).join(''):'<div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;font-style:italic">No specific tasks for your role at this time.</div>';
+      // Always show couple status
+      const ct=COUPLE_TASKS[globalIdx];
+      if(ct){
+        coupleBand=`<div class="couple-item"><div class="couple-item-label">💑 新人動態</div>`;
+        if(ct.groom&&ct.groom.length)coupleBand+=`<div style="margin-bottom:2px"><span style="color:var(--accent);font-size:10px;font-family:sans-serif">新郎：</span><span style="font-size:12px;font-family:sans-serif">${ct.groom.join('、')}</span></div>`;
+        if(ct.bride&&ct.bride.length)coupleBand+=`<div><span style="color:var(--blush);font-size:10px;font-family:sans-serif">新娘：</span><span style="font-size:12px;font-family:sans-serif">${ct.bride.join('、')}</span></div>`;
+        coupleBand+='</div>';
+      }
     }
+
     const showCamera=(role==='photographer'||isAll)&&block.camera;
     const editBtn=isAdmin?`<button class="edit-block-btn" onclick="event.stopPropagation();openEditModal(${globalIdx})"><i class="ti ti-pencil"></i></button>`:'';
+
+    // Lucky phrases for 斟茶 block
+    let luckyHtml='';
+    if(block.showLucky&&(role==='bridesmaids'||role==='groomsmen'||role==='bride'||role==='groom'||isAll)){
+      luckyHtml=`<div class="lucky-section"><div class="lucky-title">🧧 吉利說話參考</div>`;
+      Object.entries(LUCKY_PHRASES).forEach(([cat,phrases])=>{
+        luckyHtml+=`<div class="lucky-category"><div class="lucky-cat-label">${cat}</div>${phrases.map(p=>`<div class="lucky-phrase">${p}</div>`).join('')}</div>`;
+      });
+      luckyHtml+='</div>';
+    }
+
     return`<div class="time-block" id="block-${globalIdx}">
-      <div class="time-block-header" onclick="toggleBlock(this.parentElement)">
+      <div class="time-block-header" onclick="toggleBlock(this.parentElement,${globalIdx})">
         <span class="time-tag">${block.time}</span>
         <span class="time-title">${block.title}</span>
         ${editBtn}
@@ -538,34 +609,32 @@ function renderTimeline(role,section){
       </div>
       <div class="time-body">
         ${block.alert?`<div class="alert-item">${block.alert}</div>`:''}
+        ${coupleBand}
         ${showCamera?`<div class="camera-item"><i class="ti ti-camera" style="margin-right:4px"></i>${block.camera}</div>`:''}
-        <div class="task-section"><div class="task-label">Tasks</div>${tasks}</div>
+        <div class="task-section"><div class="task-label">Tasks</div>${myTasks}</div>
         ${block.supplies?`<div class="task-section"><div class="task-label">Supplies needed</div>${block.supplies.map(s=>`<div class="task-item">${s}</div>`).join('')}</div>`:''}
         ${block.notes?`<div class="task-section"><div class="task-label">Notes</div><div style="font-size:12px;color:var(--text-muted);font-family:sans-serif;line-height:1.55">${block.notes}</div></div>`:''}
+        ${luckyHtml}
       </div>
     </div>`;
   }).join('');
 }
-function toggleBlock(el){el.classList.toggle('open');}
 
-// ─── Edit Modal ───────────────────────────────────────────
+// ─── Edit Modal (timeline) ────────────────────────────────
 function openEditModal(idx){
   editingBlockIdx=idx;
   const block=TIMELINE[idx];
   document.getElementById('modal-block-title').textContent=block.time+' · '+block.title;
   document.getElementById('saving-indicator').textContent='';
-  let html='';
+  let html=`<div class="modal-section-label">Time</div><input class="modal-input" id="edit-time" value="${block.time||''}">`;
+  html+=`<div class="modal-section-label">Title</div><input class="modal-input" id="edit-title" value="${block.title||''}">`;
   EDITABLE_ROLES.forEach(role=>{
     const tasks=block.tasks[role]||[];
-    html+=`<div class="modal-role-label">${ROLE_NAMES[role]}</div>
-    <textarea class="modal-textarea" id="edit-tasks-${role}" placeholder="One task per line...">${tasks.join('\n')}</textarea>`;
+    html+=`<div class="modal-role-label">${ROLE_NAMES[role]}</div><textarea class="modal-textarea" id="edit-tasks-${role}" placeholder="One task per line...">${tasks.join('\n')}</textarea>`;
   });
-  html+=`<div class="modal-section-label">Notes</div>
-  <textarea class="modal-textarea" id="edit-notes" placeholder="Notes...">${block.notes||''}</textarea>`;
-  html+=`<div class="modal-section-label">Alert</div>
-  <input class="modal-input" id="edit-alert" placeholder="⚠️ Alert message..." value="${block.alert||''}">`;
-  html+=`<div class="modal-section-label">📸 Camera notes (Photographer)</div>
-  <input class="modal-input" id="edit-camera" placeholder="Shot notes..." value="${block.camera||''}">`;
+  html+=`<div class="modal-section-label">Notes</div><textarea class="modal-textarea" id="edit-notes">${block.notes||''}</textarea>`;
+  html+=`<div class="modal-section-label">Alert</div><input class="modal-input" id="edit-alert" value="${block.alert||''}">`;
+  html+=`<div class="modal-section-label">📸 Camera notes</div><input class="modal-input" id="edit-camera" value="${block.camera||''}">`;
   document.getElementById('modal-form-content').innerHTML=html;
   document.getElementById('edit-modal').classList.remove('hidden');
 }
@@ -573,11 +642,9 @@ function closeModal(){document.getElementById('edit-modal').classList.add('hidde
 function saveEdits(){
   if(editingBlockIdx===null)return;
   const indicator=document.getElementById('saving-indicator');
-  const saveBtn=document.querySelector('.modal-save-btn');
-  indicator.textContent='Saving...';
-  indicator.style.color='var(--text-muted)';
+  const saveBtn=document.querySelector('#edit-modal .modal-save-btn');
+  indicator.textContent='Saving...';indicator.style.color='var(--text-muted)';
   if(saveBtn)saveBtn.disabled=true;
-
   const updates={};
   EDITABLE_ROLES.forEach(role=>{
     const el=document.getElementById('edit-tasks-'+role);
@@ -588,48 +655,28 @@ function saveEdits(){
   const notes=(document.getElementById('edit-notes')||{}).value||'';
   const alert_=(document.getElementById('edit-alert')||{}).value||'';
   const camera=(document.getElementById('edit-camera')||{}).value||'';
-
-  // Always update local state immediately
+  const time_=(document.getElementById('edit-time')||{}).value||'';
+  const title_=(document.getElementById('edit-title')||{}).value||'';
   const idx=editingBlockIdx;
   TIMELINE[idx].tasks=Object.assign({},TIMELINE[idx].tasks,updates);
-  TIMELINE[idx].notes=notes.trim();
-  TIMELINE[idx].alert=alert_.trim();
-  TIMELINE[idx].camera=camera.trim();
+  TIMELINE[idx].notes=notes.trim();TIMELINE[idx].alert=alert_.trim();TIMELINE[idx].camera=camera.trim();
+  if(time_.trim())TIMELINE[idx].time=time_.trim();
+  if(title_.trim())TIMELINE[idx].title=title_.trim();
   renderTimeline(currentRole,currentFilter);
-
-  // Push to Firebase
-  if(window._firebaseReady && window._db){
-    const payload={
-      tasks:updates,
-      notes:notes.trim(),
-      alert:alert_.trim(),
-      camera:camera.trim()
-    };
-    window._dbSet(window._dbRef(window._db,'timeline/'+idx), payload)
-      .then(function(){
-        indicator.textContent='✓ Saved & synced to all users';
-        indicator.style.color='var(--success)';
-        if(saveBtn)saveBtn.disabled=false;
-        setTimeout(closeModal,1000);
-      })
-      .catch(function(e){
-        indicator.textContent='⚠️ Firebase error: '+e.message;
-        indicator.style.color='var(--danger)';
-        if(saveBtn)saveBtn.disabled=false;
-      });
-  } else {
-    indicator.textContent='⚠️ Firebase not connected';
-    indicator.style.color='var(--danger)';
-    if(saveBtn)saveBtn.disabled=false;
-    setTimeout(closeModal,1200);
-  }
+  if(window._firebaseReady&&window._db){
+    const payload={tasks:updates,notes:notes.trim(),alert:alert_.trim(),camera:camera.trim(),time:time_.trim(),title:title_.trim()};
+    window._dbSet(window._dbRef(window._db,'timeline/'+idx),payload)
+      .then(function(){indicator.textContent='✓ Saved & synced';indicator.style.color='var(--success)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeModal,1000);})
+      .catch(function(e){indicator.textContent='⚠️ Error: '+e.message;indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;});
+  } else {indicator.textContent='⚠️ Firebase not connected';indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeModal,1200);}
 }
 
 // ─── Supplies ─────────────────────────────────────────────
 function renderSupplies(){
+  const isAdmin=currentRole==='admin';
   const c=document.getElementById('supplies-content');
   let total=0;
-  c.innerHTML=SUPPLIES.map((sec,si)=>{
+  c.innerHTML=SUPPLIES_DATA.map((sec,si)=>{
     const items=sec.items.map((item,ii)=>{
       const key=`s_${si}_${ii}`;total++;
       const checked=checkedItems[key]||false;
@@ -639,36 +686,69 @@ function renderSupplies(){
         ${item.qty?`<div class="supply-qty">${item.qty}</div>`:''}
       </div>`;
     }).join('');
-    return`<div class="supply-section"><div class="supply-section-title">${sec.section}</div>${items}</div>`;
+    const editBtn=isAdmin?`<button class="supply-edit-btn" onclick="event.stopPropagation();openSupplyModal(${si})"><i class="ti ti-pencil"></i></button>`:'';
+    return`<div class="supply-section-wrap">
+      <div class="supply-section-header" onclick="toggleSupplySection(this)">
+        <span class="supply-section-title">${sec.section}</span>
+        ${editBtn}
+        <i class="ti ti-chevron-down" style="font-size:13px;color:var(--text-muted);transition:transform .2s;margin-left:6px"></i>
+      </div>
+      <div class="supply-items-wrap">${items}</div>
+    </div>`;
   }).join('');
   document.getElementById('check-total').textContent=total;
   updateCheckCount();
 }
-function renderCheckStates(){
-  document.querySelectorAll('.supply-item').forEach(el=>{
-    const key=el.id.replace('supply-','');
-    el.classList.toggle('checked',!!(checkedItems[key]));
-  });
-}
-async function toggleCheck(key,el){
-  checkedItems[key]=!checkedItems[key];
-  el.classList.toggle('checked',checkedItems[key]);
-  updateCheckCount();
-  if(window._firebaseReady){
-    try{
-      await window._dbSet(window._dbRef(window._db,`checks/${key}`),checkedItems[key]);
-    }catch(e){console.warn('check sync failed',e);}
+
+let openSupplySectionEl=null;
+function toggleSupplySection(headerEl){
+  const wrap=headerEl.nextElementSibling;
+  const chevron=headerEl.querySelector('.ti-chevron-down');
+  const isOpen=wrap.style.display!=='none'&&wrap.style.display!=='';
+  if(openSupplySectionEl&&openSupplySectionEl!==headerEl){
+    const prevWrap=openSupplySectionEl.nextElementSibling;
+    const prevChevron=openSupplySectionEl.querySelector('.ti-chevron-down');
+    if(prevWrap)prevWrap.style.display='none';
+    if(prevChevron)prevChevron.style.transform='';
+    openSupplySectionEl=null;
   }
+  if(isOpen){wrap.style.display='none';if(chevron)chevron.style.transform='';openSupplySectionEl=null;}
+  else{wrap.style.display='block';if(chevron)chevron.style.transform='rotate(180deg)';openSupplySectionEl=headerEl;}
 }
-async function resetChecks(){
-  checkedItems={};
-  document.querySelectorAll('.supply-item').forEach(el=>el.classList.remove('checked'));
-  updateCheckCount();
-  if(window._firebaseReady){
-    try{await window._dbSet(window._dbRef(window._db,'checks'),{});}
-    catch(e){console.warn('reset sync failed',e);}
-  }
+
+function openSupplyModal(si){
+  editingSupplyIdx=si;
+  const sec=SUPPLIES_DATA[si];
+  document.getElementById('supply-modal-title').textContent='Edit: '+sec.section;
+  document.getElementById('supply-edit-textarea').value=sec.items.map(item=>item.qty?item.name+' | '+item.qty:item.name).join('\n');
+  document.getElementById('supply-saving-indicator').textContent='';
+  document.getElementById('supply-edit-modal').classList.remove('hidden');
 }
+function closeSupplyModal(){document.getElementById('supply-edit-modal').classList.add('hidden');editingSupplyIdx=null;}
+function saveSupplyEdits(){
+  if(editingSupplyIdx===null)return;
+  const indicator=document.getElementById('supply-saving-indicator');
+  const saveBtn=document.querySelector('#supply-edit-modal .modal-save-btn');
+  indicator.textContent='Saving...';indicator.style.color='var(--text-muted)';
+  if(saveBtn)saveBtn.disabled=true;
+  const raw=document.getElementById('supply-edit-textarea').value.trim();
+  const newItems=raw?raw.split('\n').map(line=>{
+    const parts=line.split('|');
+    return{name:parts[0].trim(),qty:parts[1]?parts[1].trim():''};
+  }).filter(item=>item.name):[{name:'__empty__',qty:''}];
+  const si=editingSupplyIdx;
+  SUPPLIES_DATA[si].items=newItems;
+  renderSupplies();
+  if(window._firebaseReady&&window._db){
+    window._dbSet(window._dbRef(window._db,'supplies/'+si),{items:newItems})
+      .then(function(){indicator.textContent='✓ Saved & synced';indicator.style.color='var(--success)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeSupplyModal,1000);})
+      .catch(function(e){indicator.textContent='⚠️ Error: '+e.message;indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;});
+  } else {indicator.textContent='⚠️ Firebase not connected';indicator.style.color='var(--danger)';if(saveBtn)saveBtn.disabled=false;setTimeout(closeSupplyModal,1200);}
+}
+
+function renderCheckStates(){document.querySelectorAll('.supply-item').forEach(el=>{const key=el.id.replace('supply-','');el.classList.toggle('checked',!!(checkedItems[key]));});}
+async function toggleCheck(key,el){checkedItems[key]=!checkedItems[key];el.classList.toggle('checked',checkedItems[key]);updateCheckCount();if(window._firebaseReady){try{await window._dbSet(window._dbRef(window._db,'checks/'+key),checkedItems[key]);}catch(e){console.warn('check sync failed',e);}}}
+async function resetChecks(){checkedItems={};document.querySelectorAll('.supply-item').forEach(el=>el.classList.remove('checked'));updateCheckCount();if(window._firebaseReady){try{await window._dbSet(window._dbRef(window._db,'checks'),{});}catch(e){console.warn(e);}}}
 function updateCheckCount(){document.getElementById('check-count').textContent=Object.values(checkedItems).filter(Boolean).length;}
 
 // ─── Contacts ─────────────────────────────────────────────
@@ -676,13 +756,17 @@ function renderContacts(){
   document.getElementById('contacts-content').innerHTML=CONTACTS.map(c=>`
     <div class="contact-card">
       <div class="contact-avatar">${c.initials}</div>
-      <div style="flex:1">
-        <div class="contact-name">${c.name}</div>
-        <div class="contact-role">${c.role}</div>
-      </div>
-      ${c.phone&&c.phone!=='（待填）'?`<a href="tel:${c.phone.replace(/[^+\d]/g,'')}" style="font-size:12px;color:var(--gold);font-family:sans-serif;text-decoration:none;flex-shrink:0;padding-left:8px" onclick="event.stopPropagation()">${c.phone}</a>`:(c.phone==='（待填）'?`<span style="font-size:11px;color:var(--text-muted);font-family:sans-serif">待填</span>`:'')}
+      <div style="flex:1"><div class="contact-name">${c.name}</div><div class="contact-role">${c.role}</div></div>
+      ${c.phone&&c.phone!=='（待填）'?`<a href="tel:${c.phone.replace(/[^+\d]/g,'')}" style="font-size:12px;color:var(--accent);font-family:sans-serif;text-decoration:none;flex-shrink:0;padding-left:8px" onclick="event.stopPropagation()">${c.phone}</a>`:(c.phone==='（待填）'?'<span style="font-size:11px;color:var(--text-muted);font-family:sans-serif">待填</span>':'')}
     </div>`).join('');
 }
+
+// Init supplies collapsed
+document.addEventListener('DOMContentLoaded',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.supply-items-wrap').forEach(function(w){w.style.display='none';});
+  },100);
+});
 </script>
 </body>
 </html>
