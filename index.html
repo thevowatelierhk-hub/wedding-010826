@@ -403,8 +403,22 @@ function attachFirebaseListeners(){
       const data=snap.val();
       TIMELINE=TIMELINE_DEFAULT.map((block,i)=>{
         if(data[i]){
+          let mergedTasks=Object.assign({},block.tasks);
+          if(data[i].tasks){
+            Object.keys(data[i].tasks).forEach(function(role){
+              const t=data[i].tasks[role];
+              // ['__empty__'] sentinel means intentionally blank
+              if(Array.isArray(t)&&t.length===1&&t[0]==='__empty__'){
+                mergedTasks[role]=[];
+              } else if(Array.isArray(t)){
+                mergedTasks[role]=t;
+              } else {
+                mergedTasks[role]=[];
+              }
+            });
+          }
           return Object.assign({},block,{
-            tasks:data[i].tasks?Object.assign({},block.tasks,data[i].tasks):block.tasks,
+            tasks:mergedTasks,
             notes:data[i].notes!==undefined?data[i].notes:block.notes,
             alert:data[i].alert!==undefined?data[i].alert:block.alert,
             camera:data[i].camera!==undefined?data[i].camera:block.camera
@@ -568,7 +582,8 @@ function saveEdits(){
   EDITABLE_ROLES.forEach(role=>{
     const el=document.getElementById('edit-tasks-'+role);
     const val=el?el.value.trim():'';
-    updates[role]=val?val.split('\n').map(s=>s.trim()).filter(Boolean):[];
+    const tasks=val?val.split('\n').map(s=>s.trim()).filter(Boolean):[];
+    updates[role]=tasks.length>0?tasks:['__empty__'];
   });
   const notes=(document.getElementById('edit-notes')||{}).value||'';
   const alert_=(document.getElementById('edit-alert')||{}).value||'';
